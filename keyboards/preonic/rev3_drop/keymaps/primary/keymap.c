@@ -15,20 +15,23 @@ enum my_music_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    // macOS base layer
     [0] = LAYOUT_ortho_5x12(
         KC_ESC , KC_1   , KC_2   , KC_3   , KC_4 , KC_5  , KC_6  , KC_7 , KC_8   , KC_9   , KC_0   , KC_DEL ,
         KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R , KC_T  , KC_Y  , KC_U , KC_I   , KC_O   , KC_P   , KC_MINS,
         KC_BSPC, KC_A   , KC_S   , KC_D   , KC_F , KC_G  , KC_H  , KC_J , KC_K   , KC_L   , KC_SCLN, KC_ENT ,
         KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V , KC_B  , KC_N  , KC_M , KC_COMM, KC_DOT , KC_SLSH, KC_QUOT,
-        KC_LCTL, KC_LGUI, KC_LALT, OS_RALT, MO(2), KC_SPC, KC_SPC, MO(4), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+        KC_LGUI, KC_LCTL, KC_LALT, __HYPER, MO(2), KC_SPC, KC_SPC, MO(3), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
     ),
+    // linux/windows base layer
     [1] = LAYOUT_ortho_5x12(
-        KC_ESC , KC_1   , KC_2   , KC_3   , KC_4 , KC_5  , KC_6  , KC_7 , KC_8   , KC_9   , KC_0   , KC_DEL ,
-        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R , KC_T  , KC_Y  , KC_U , KC_I   , KC_O   , KC_P   , KC_MINS,
-        KC_BSPC, KC_A   , KC_S   , KC_D   , KC_F , KC_G  , KC_H  , KC_J , KC_K   , KC_L   , KC_SCLN, KC_ENT ,
-        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V , KC_B  , KC_N  , KC_M , KC_COMM, KC_DOT , KC_SLSH, KC_QUOT,
-        KC_LGUI, KC_LCTL, KC_LALT, __HYPER, MO(2), KC_SPC, KC_SPC, MO(4), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           ___v,    ___v,    ___v,    ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,
+           ___v,    ___v,    ___v,    ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,
+           ___v,    ___v,    ___v,    ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,
+           ___v,    ___v,    ___v,    ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,
+        KC_LCTL, KC_LGUI, KC_LALT, OS_RALT, MO(2),  ___v,  ___v, MO(4),  ___v,  ___v,  ___v,  ___v
     ),
+    // colemak layer
     // [1] = LAYOUT_ortho_5x12(
     //     ___v, KC_1, KC_2, KC_3, KC_4, KC_5  , KC_6  , KC_7, KC_8   , KC_9  , KC_0   , ___v,
     //     ___v, KC_Q, KC_W, KC_F, KC_P, KC_G  , KC_J  , KC_L, KC_U   , KC_Y  , KC_SCLN, ___v,
@@ -43,12 +46,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___v   , ___x   , ___x   , ___x   , ___x   , ___x  , ___x  , KC_PMNS, KC_EQL , KC_0   , KC_DOT , ___v   ,
         ___v   , ___v   , ___v   , ___v   , ___v   , KC_SPC, KC_SPC, MO(5)  , KC_HOME, KC_PGDN, KC_PGUP, KC_END
     ),
-    [4] = LAYOUT_ortho_5x12(
-        KC_ESC , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 , KC_F6 , ___x   , KC_HOME, KC_PGDN, KC_PGUP, KC_END ,
-        KC_TAB , KC_F7 , KC_F8 , KC_F9 , KC_F10, KC_F11, KC_F12, KC_PIPE, KC_PLUS, KC_LCBR, KC_RCBR, KC_PSCR,
+    [3] = LAYOUT_ortho_5x12(
+        // macOS home/end
+        KC_ESC , KC_F1 , KC_F2 , KC_F3 , KC_F4 , KC_F5 , KC_F6 , ___x   , ___x   , LGUI(KC_LEFT), LGUI(KC_RGHT), KC_PSCR,
+        KC_TAB , KC_F7 , KC_F8 , KC_F9 , KC_F10, KC_F11, KC_F12, KC_PIPE, KC_PLUS, KC_LCBR, KC_RCBR, ___x   ,
         KC_BSPC, KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18, KC_BSLS, KC_EQL , KC_LBRC, KC_RBRC, ___x   ,
         ___v   , KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, ___x   , ___x   , ___x   , ___x   , ___x   ,
         ___v   , ___v  , ___v  , ___v  , MO(5) , ___v  , ___v  , ___v   , ___x   , ___x   , ___x   , ___x
+    ),
+    [4] = LAYOUT_ortho_5x12(
+          ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v, KC_HOME, KC_END,  ___v,
+          ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,    ___v,   ___v,  ___v,
+          ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,    ___v,   ___v,  ___v,
+          ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,    ___v,   ___v,  ___v,
+          ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,  ___v,    ___v,   ___v,  ___v
     ),
     [5] = LAYOUT_ortho_5x12(
         QK_BOOT, DF(0)   , DF(1)   , ___x, ___x, ___x  , ___x  , ___x, ___x, ___x, ___x, ___x,
@@ -69,7 +80,7 @@ const uint8_t music_map[MATRIX_ROWS][MATRIX_COLS] = LAYOUT_ortho_5x12(
 //  G3  A3  B3  C4  D4  E4  F4  G4  A4  B4  C5  D5
     99,  1,  3, 99,  6,  8, 99, 11, 13, 15, 99, 18,
      0,  2,  4,  5,  7,  9, 10, 12, 14, 16, 17, 19,
-    
+
     99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99
 );
 
