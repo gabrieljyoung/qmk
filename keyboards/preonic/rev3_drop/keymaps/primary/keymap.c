@@ -6,6 +6,8 @@
 #define ___v KC_TRNS  // 'v' like a down arrow, fallthrough to layer below
 #define ___x KC_NO    // 'x' means NOOP
 
+#define __HYPER  QK_LCTL | QK_LSFT | QK_LALT | QK_LGUI
+
 // testing preset songs
 enum my_music_keycodes {
     MUS_USSR = SAFE_RANGE,
@@ -21,12 +23,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT, OS_RALT, MO(2), KC_SPC, KC_SPC, MO(4), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
     ),
     [1] = LAYOUT_ortho_5x12(
-        ___v, KC_1, KC_2, KC_3, KC_4, KC_5  , KC_6  , KC_7, KC_8   , KC_9  , KC_0   , ___v,
-        ___v, KC_Q, KC_W, KC_F, KC_P, KC_G  , KC_J  , KC_L, KC_U   , KC_Y  , KC_SCLN, ___v,
-        ___v, KC_A, KC_R, KC_S, KC_T, KC_B  , KC_M  , KC_N, KC_E   , KC_I  , KC_O   , ___v,
-        ___v, KC_Z, KC_X, KC_C, KC_D, KC_V  , KC_K  , KC_H, KC_COMM, KC_DOT, KC_SLSH, ___v,
-        ___v, ___v, ___v, ___v, ___v, KC_SPC, KC_SPC, ___v, ___v   , ___v  , ___v   , ___v
+        KC_ESC , KC_1   , KC_2   , KC_3   , KC_4 , KC_5  , KC_6  , KC_7 , KC_8   , KC_9   , KC_0   , KC_DEL ,
+        KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R , KC_T  , KC_Y  , KC_U , KC_I   , KC_O   , KC_P   , KC_MINS,
+        KC_BSPC, KC_A   , KC_S   , KC_D   , KC_F , KC_G  , KC_H  , KC_J , KC_K   , KC_L   , KC_SCLN, KC_ENT ,
+        KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V , KC_B  , KC_N  , KC_M , KC_COMM, KC_DOT , KC_SLSH, KC_QUOT,
+        KC_LGUI, KC_LCTL, KC_LALT, __HYPER, MO(2), KC_SPC, KC_SPC, MO(4), KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
     ),
+    // [1] = LAYOUT_ortho_5x12(
+    //     ___v, KC_1, KC_2, KC_3, KC_4, KC_5  , KC_6  , KC_7, KC_8   , KC_9  , KC_0   , ___v,
+    //     ___v, KC_Q, KC_W, KC_F, KC_P, KC_G  , KC_J  , KC_L, KC_U   , KC_Y  , KC_SCLN, ___v,
+    //     ___v, KC_A, KC_R, KC_S, KC_T, KC_B  , KC_M  , KC_N, KC_E   , KC_I  , KC_O   , ___v,
+    //     ___v, KC_Z, KC_X, KC_C, KC_D, KC_V  , KC_K  , KC_H, KC_COMM, KC_DOT, KC_SLSH, ___v,
+    //     ___v, ___v, ___v, ___v, ___v, KC_SPC, KC_SPC, ___v, ___v   , ___v  , ___v   , ___v
+    // ),
     [2] = LAYOUT_ortho_5x12(
         KC_TILD, KC_MPLY, KC_MPRV, KC_MNXT, KC_BRIU, ___x  , ___x  , KC_PSLS, KC_7   , KC_8   , KC_9   , KC_CALC,
         KC_GRV , KC_MUTE, KC_VOLD, KC_VOLU, KC_BRID, ___x  , ___x  , KC_PAST, KC_4   , KC_5   , KC_6   , ___v   ,
